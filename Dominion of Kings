@@ -1,0 +1,37 @@
+//Creates a scorekeeping program for kings to keep track of points per type of territory they own
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{ 
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("How many provinces do you own?");
+            int province = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+
+            Console.WriteLine("How many duchies do you own?");
+            int duchy = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+
+            Console.WriteLine("How many estates do you own?");
+            int estate= Convert.ToInt32(Console.ReadLine()); 
+
+            Console.WriteLine();
+
+            Console.WriteLine($"So you own {province} provinces, {duchy} duchies, and {estate} estates");
+
+            Console.WriteLine();
+
+            int score = ((province * 6) + (duchy * 3) + (estate * 1));
+            Console.WriteLine($"That gives you a total of {score} points!");
+
+            Console.ReadLine();
