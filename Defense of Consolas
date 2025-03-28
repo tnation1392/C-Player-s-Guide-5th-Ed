@@ -1,0 +1,30 @@
+//Creates a grid system to calculate four points around a given point with a row/column combination
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{ 
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Select target row");
+            int Row = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+
+            Console.WriteLine("Select target column");
+            int Col = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+
+            Console.WriteLine($"{Row}, {Col - 1}");
+            Console.WriteLine($"{Row + 1}, {Col}");
+            Console.WriteLine($"{Row}, {Col + 1}");
+            Console.WriteLine($"{Row - 1}, {Col}");
+
+            Console.ReadLine();
