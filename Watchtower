@@ -1,0 +1,65 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{ 
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Please enter an X coordinate");
+            int Xcoord = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+
+            Console.WriteLine("Please enter a Y coordinate");
+            int Ycoord = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine();
+
+            if (Xcoord == 0 && Ycoord == 0)
+            {
+                Console.WriteLine("They're already in the city!");
+            }
+            else if (Xcoord == 0 && Ycoord < 0)
+            {
+                Console.WriteLine("They're coming from the South!");
+            }
+            else if (Xcoord < 0 && Ycoord < 0)
+            {
+                Console.WriteLine("They're coming from the Southwest!");
+            }
+            else if (Xcoord < 0 && Ycoord == 0)
+            {
+                Console.WriteLine("They're coming from the West!");
+            }
+            else if (Xcoord < 0 && Ycoord > 0)
+            {
+                Console.WriteLine("They're coming from the Northwest!");
+            }
+            else if (Xcoord == 0 && Ycoord > 0)
+            {
+                Console.WriteLine("They're coming from the North!");
+            }
+            else if (Xcoord > 0 && Ycoord > 0)
+            {
+                Console.WriteLine("They're coming from the Northeast!");
+            }
+            else if (Xcoord > 0 && Ycoord == 0)
+            {
+                Console.WriteLine("They're coming from the East!");
+            }
+            else
+            {
+                Console.WriteLine("They're coming from the Southeast!");
+            }
+
+            Console.ReadLine();
+            }
+    }
+
+}
+
