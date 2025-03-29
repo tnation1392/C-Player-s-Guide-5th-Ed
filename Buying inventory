@@ -1,0 +1,53 @@
+//Creates a store inventory with associated prices that come up via input
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{ 
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Welcome! The following items are available:");
+            Console.WriteLine("1 - Rope");
+            Console.WriteLine("2 - Torches");
+            Console.WriteLine("3 - Climbing Equipment");
+            Console.WriteLine("4 - Clean Water");
+            Console.WriteLine("5 - Machete");
+            Console.WriteLine("6 - Canoe");
+            Console.WriteLine("7 - Food Supplies");
+
+
+            int choice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+            switch (choice)
+            {
+                case 1: Console.WriteLine("Rope is 10 gold");
+                    break;
+                case 2: Console.WriteLine("Torches are 15 gold each");
+                    break;
+                case 3: Console.WriteLine("The climbing equipment is 50 gold altogether");
+                    break;
+                case 4: Console.WriteLine("Clean water will cost you 15 gold");
+                    break;
+                case 5: Console.WriteLine("A machete is 25 gold");
+                    break;
+                case 6: Console.WriteLine("That canoe'll cost you 150 gold");
+                    break;
+                case 7: Console.WriteLine("The food supplies will be 30 gold");
+                    break;
+                case 8: Console.WriteLine("I dont know that item");
+                    break;
+            }
+          
+
+
+            Console.ReadLine();
+            }
+    }
+
+}
