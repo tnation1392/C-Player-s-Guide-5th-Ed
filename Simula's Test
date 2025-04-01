@@ -20,21 +20,28 @@ namespace ConsoleApp2
 
                 string input = Console.ReadLine();
 
-                if (currentState == ChestState.Locked && input == "unlock") currentState = ChestState.Closed;
-                if (currentState == ChestState.Closed && input == "open") currentState = ChestState.Open;
-                if (currentState == ChestState.Open && input == "close") currentState = ChestState.Closed;
+                if (currentState == ChestState.Locked && input == "unlock")
+                {
+                    currentState = ChestState.Closed;
+                    Console.WriteLine("You have unlocked the chest.");
+                }
+                if (currentState == ChestState.Closed && input == "open")
+                {
+                    currentState = ChestState.Open;
+                    Console.WriteLine("You have opened the chest.");
+                }
+                if (currentState == ChestState.Open && input == "close")
+                {
+                    currentState = ChestState.Closed;
+                    Console.WriteLine("You have closed the chest.");
+                }
 
                 Console.ReadLine();
+                continue;
             }
         }
 
-            enum ChestState { Open, Closed, Locked }
-
-
-
-
-            
-            
+            enum ChestState { Open, Closed, Locked }           
     }
 
 }
