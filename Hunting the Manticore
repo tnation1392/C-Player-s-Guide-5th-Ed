@@ -1,0 +1,126 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Game Setup
+            int cityHealth = 15;
+            int manticoreHealth = 10;
+            int round = 1;
+
+            // Manticore placement
+            int mantrange = IsnuminRange("Player 1, how far away from the city do you want to station the Manticore?", 0, 100);
+            Console.Clear();
+
+            Console.WriteLine($"Player 2 it is now your turn");
+
+            while (cityHealth > 0 && manticoreHealth > 0)
+            {
+                // Display the status for the round.
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("-----------------------------------------------------------");
+                DisplayStatus(round, cityHealth, manticoreHealth);
+
+                //Display the damage this turn
+                int damage = CannonDamage(round);
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"The cannon is expected to deal {damage} damage this round.");
+
+                //Getting a number from the player
+                Console.ForegroundColor= ConsoleColor.Cyan;
+                int TargetRange = Askfornum("Enter desired cannon range:");
+
+                //Find out if the round hit or missed the Manticore
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                HitorMiss(TargetRange, mantrange);
+
+                //Deal the damage if necessary to the Manticore and 1 damage to the city
+                if (TargetRange == mantrange) {manticoreHealth -= damage;}
+
+                if (manticoreHealth > 0) cityHealth--;
+
+                //go to the next round
+                round++;
+                
+                Console.ReadLine();
+            }
+
+            bool won = cityHealth > 0;
+            DisplayWinOrLose(won);
+        }
+
+        // Displays the result of the game.
+        public static void DisplayWinOrLose(bool won)
+        {
+            if (won)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("The Manticore has been destroyed! The city of Consolas has been saved!");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("The city has been destroyed. The Manticore and the Uncoded One have won.");
+            }
+        }
+        // Displays the statuses for the current round
+        public static void DisplayStatus(int round, int cityHealth, int manticoreHealth)
+        {
+           Console.WriteLine($"STATUS: Round: {round}  City: {cityHealth}/15  Manticore: {manticoreHealth}/10");
+        }
+            
+
+        //Gives the value for damage in the current round
+        public static int CannonDamage(int roundnum)
+        {
+            if (roundnum % 5 == 0 && roundnum % 3 == 0) return 10;
+            else if (roundnum % 5 == 0) return 3;
+            else if (roundnum % 3 == 0) return 3;
+            else return 1;
+        }
+
+        //Asks for number and converts it to int
+        public static int Askfornum(string text)
+        {
+            Console.Write(text + "");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            int number = Convert.ToInt32(Console.ReadLine());
+            return number;
+        }
+
+        //Checks to see if number given by Player 2 is withing the range
+        public static int IsnuminRange(string text, int min, int max)
+        {
+            while (true)
+            {
+                int number = Askfornum(text);
+                if (number >= min && number < max)
+                    return number;
+            }
+
+
+        }
+        //Checks if the player hit the Manticore or not
+        public static void HitorMiss(int TargetRange, int mantrange)
+        {
+            if (TargetRange < mantrange) Console.WriteLine("That round fell SHORT of the target!");
+            else if (TargetRange > mantrange) Console.WriteLine("That round went OVER the target!");
+            else Console.WriteLine("That round was a DIRECT HIT!");
+        }
+
+        //
+
+    }
+}
