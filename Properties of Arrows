@@ -1,10 +1,4 @@
 
-The C# Player's Guide
-It's dangerous to code alone! Take this.
-About Solutions Expansions Articles Errata Downloads Discord Blog FAQ Contact
-Properties of Arrows
-The following is one possible solution to this challenge.
-
 Arrow arrow = GetArrow();
 Console.WriteLine($"That arrow costs {arrow.Cost} gold.");
 
